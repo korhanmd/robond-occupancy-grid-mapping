@@ -18,6 +18,11 @@ vector< vector<double> > l(mapWidth/gridWidth, vector<double>(mapHeight/gridHeig
 
 double inverseSensorModel(double x, double y, double theta, double xi, double yi, double sensorData[])
 {
+    // Defining Sensor Characteristics
+    double Zk, thetaK, sensorTheta;
+    double minDelta = -1;
+    double alpha = 200, beta = 20;
+
     return 0.4;
 }
 
