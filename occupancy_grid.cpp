@@ -23,6 +23,11 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
     double minDelta = -1;
     double alpha = 200, beta = 20;
 
+    // Compute r and phi
+    double r = sqrt(pow(xi - x, 2) + pow(yi - y, 2));
+    double phi = atan2(yi - y, xi - x) - theta;
+
+
     return 0.4;
 }
 
