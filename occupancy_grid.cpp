@@ -23,7 +23,15 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
 
 void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])
 {
-    
+    for (int i = 0; i < mapWidth/gridWidth; i++){
+        for (int j = 0; j < mapHeight/gridHeight; j++){
+            double xi = i*gridWidth + gridWidth/2 - robotXOffset;
+            double yi = -(j*gridHeight + gridHeight/2) + robotYOffset;
+            
+            if (sqrt(pow(xi - Robotx, 2) + pow(yi - Roboty, 2)) <= Zmax)
+                l[i][j] = l[i][j] + inverseSensorModel(Robotx, Roboty, Robottheta, xi, yi, sensorData) - l0;
+        }    
+    }
 }
 
 int main()
