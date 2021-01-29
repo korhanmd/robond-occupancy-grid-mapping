@@ -52,8 +52,13 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
         }
     }
 
-
-    return 0.4;
+    // Evaluate the three cases
+    if (r > min((double)Zmax, Zk + alpha/2) || fabs(phi - thetaK) > beta / 2 || Zk > Zmax || Zk < Zmin)
+        return l0;
+    else if (Zk < Zmax && fabs(r - Zk) < alpha / 2)
+        return locc;
+    else if (r <= Zk)
+        return lfree;
 }
 
 void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, double sensorData[])
