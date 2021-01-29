@@ -27,6 +27,31 @@ double inverseSensorModel(double x, double y, double theta, double xi, double yi
     double r = sqrt(pow(xi - x, 2) + pow(yi - y, 2));
     double phi = atan2(yi - y, xi - x) - theta;
 
+    // Scaling Measurement to [-90 -37.5 -22.5 -7.5 7.5 22.5 37.5 90]
+    for (int i = 0; i < 8; i++) {
+        if (i == 0) {
+            sensorTheta = -90 * (M_PI / 180);
+        }
+        else if (i == 1) {
+            sensorTheta = -37.5 * (M_PI / 180);
+        }
+        else if (i == 6) {
+            sensorTheta = 37.5 * (M_PI / 180);
+        }
+        else if (i == 7) {
+            sensorTheta = 90 * (M_PI / 180);
+        }
+        else {
+            sensorTheta = (-37.5 + (i - 1) * 15) * (M_PI / 180);
+        }
+
+        if (fabs(phi - sensorTheta) < minDelta || minDelta == -1) {
+            Zk = sensorData[i];
+            thetaK = sensorTheta;
+            minDelta = fabs(phi - sensorTheta);
+        }
+    }
+
 
     return 0.4;
 }
