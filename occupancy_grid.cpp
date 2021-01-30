@@ -86,9 +86,9 @@ void visualization()
     
     // Loop over the log odds values of the cells and plot each cell state. 
     // Unkown state: green color, occupied state: black color, and free state: red color 
-    for (int i = 0; i < 300; i++){
+    for (double i = 0; i < 300; i++){
         cout << "Remaining Rows: " << 300 - i << endl;
-        for (int j = 0; j < 150; j++){
+        for (double j = 0; j < 150; j++){
             if (l[i][j] == 0)
                 plt::plot({i}, {j}, "g.");
             if (l[i][j] > 0)
