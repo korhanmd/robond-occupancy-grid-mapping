@@ -1,7 +1,10 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include "matplotlibcpp.h"
+
 using namespace std;
+namespace plt = matplotlibcpp;
 
 // Sensor characteristic: Min and Max ranges of the beams
 double Zmax = 5000, Zmin = 170;
@@ -74,6 +77,16 @@ void occupancyGridMapping(double Robotx, double Roboty, double Robottheta, doubl
     }
 }
 
+void visualization()
+{
+    //TODO: Initialize a plot named Map of size 300x150
+    
+    //TODO: Loop over the log odds values of the cells and plot each cell state. 
+    //Unkown state: green color, occupied state: black color, and free state: red color 
+    
+    //TODO: Save the image and close the plot 
+}
+
 int main()
 {
     double timeStamp;
@@ -92,12 +105,10 @@ int main()
         occupancyGridMapping(robotX, robotY, (robotTheta / 10) * (M_PI / 180), measurementData);
     }
     
-    // Displaying the map
-    for (int x = 0; x < mapWidth / gridWidth; x++) {
-        for (int y = 0; y < mapHeight / gridHeight; y++) {
-            cout << l[x][y] << " ";
-        }
-    }
+    // Visualize the map at the final step
+    cout << "Wait for the image to generate" << endl;
+    visualization();
+    cout << "Done!" << endl;
     
     return 0;
 }
