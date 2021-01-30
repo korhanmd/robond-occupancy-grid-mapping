@@ -98,7 +98,9 @@ void visualization()
         }
     }
     
-    //TODO: Save the image and close the plot 
+    // Save the image and close the plot 
+    plt::save("./Images/Map.png");
+    plt::clf();
 }
 
 int main()
