@@ -91,7 +91,7 @@ void visualization()
         for (double j = 0; j < 150; j++){
             if (l[i][j] == 0)
                 plt::plot({i}, {j}, "g.");
-            if (l[i][j] > 0)
+            else if (l[i][j] > 0)
                 plt::plot({i}, {j}, "k.");
             else
                 plt::plot({i}, {j}, "r.");
