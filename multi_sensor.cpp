@@ -7,14 +7,13 @@ const int mapHeight = 2;
 
 void sensorFusion(double m1[][mapWidth], double m2[][mapWidth])
 {
-    //*#############TODO: Code the Sensor Fusion Function############*//
     // Fuse the measurments of the two maps and print the resulting 
-    //map in a matrix form:
-    //a  b
-    //c  d
-
-
-
+    for (int i = 0; i < mapHeight; i++){
+        for (int j = 0; j < mapWidth; j++){
+            cout << 1 - (1 - m1[i][j])*(1 - m2[i][j]) << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main()
